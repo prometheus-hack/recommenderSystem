@@ -1,0 +1,25 @@
+version: "3.8"
+
+services:
+  chroma:
+    container_name: chroma
+    image: chromadb/chroma
+    volumes:
+      - chroma_data:/chroma
+    ports:
+      - "7689:8000"
+    restart: unless-stopped
+
+  locations_recommend_system:
+    container_name: locations_recommend_system
+    build: .
+    command: [ "uvicorn", "main:app", "--host", "0.0.0.0", "--port", "7860" ]
+    ports:
+      - "8083:7860"
+    environment:
+      CHROMA_HOST: localhost
+      CHROMA_PORT: 7689
+    depends_on:
+      - chroma
+volumes:
+  chroma_data:

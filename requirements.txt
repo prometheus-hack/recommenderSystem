@@ -1,0 +1,5 @@
+Chroma==0.2.0
+chroma-hnswlib==0.7.3
+chromadb==0.4.24
+fastapi==0.103.0
+uvicorn==0.23.2
