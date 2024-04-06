@@ -13,7 +13,7 @@ services:
     build: .
     command: uvicorn main:app --host 0.0.0.0 --port 7860
     ports:
-      - "8083:7860"
+      - "83:7860"
     environment:
       CHROMA_HOST: chroma
       CHROMA_PORT: 8000
